@@ -47,7 +47,7 @@ namespace Lab2_hw
 
             while (g1.inGame)
             {
-                if (g1.score > 2) 
+                if (g1.score > 4) 
                 {
                     //если последний уровень, то выигрыш
                     if (g1.level == 4)

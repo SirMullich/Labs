@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lab1_hw
@@ -24,8 +25,10 @@ namespace Lab1_hw
 
             //подсвеченный каталог или файл
             int index = 0;
+
             //открыт ли файл
             bool fileOpened = false;
+
             //флаг для остановки программы
             bool run = true;
 
@@ -76,10 +79,12 @@ namespace Lab1_hw
                         if ((index < items.Count - 1) && (!fileOpened)) index++;
                         break;
                     case ConsoleKey.Enter:
+                        //если это файл
                         if (items[index].GetType() == typeof(FileInfo))
                         {
                             fileOpened = true;
                         }
+                        //если это папка
                         if (items[index].GetType() == typeof(DirectoryInfo))
                         {
                             path = items[index].FullName;
@@ -108,7 +113,6 @@ namespace Lab1_hw
                                 }
                                 else
                                 {
-                                    //Console.Beep(450, 100);
                                 }
                                 
                             }
