@@ -9,9 +9,46 @@ namespace Lab_git
 {
     class Program
     {
+        static void ShowInfo(string path) {
+            DirectoryInfo directory = new DirectoryInfo(path);
+            Console.WriteLine(directory.FullName + ": " + directory.GetFiles().Length);
+            
+            DirectoryInfo[] directories = directory.GetDirectories();
+
+            for (int i = 0; i < directories.Length; i++) {
+                Console.WriteLine(directories[i].FullName + ": " + directories[i].GetFiles().Length);
+                DirectoryInfo[] d2 = directories[i].GetDirectories();
+                for (int j=0; j < d2.Length; j++) {
+                    Console.WriteLine(d2[j].FullName + ": " + d2[j].GetFiles().Length);
+                }
+            }
+
+        }
+        static void ShowRecursive(string path)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(path);
+                Console.WriteLine(dir.FullName + ": " + dir.GetFiles().Length);
+                //Console.WriteLine("Check" + dir.ToString());
+
+                DirectoryInfo[] subdirs = dir.GetDirectories();
+
+                for (int i = 0; i < subdirs.Length; i++)
+                {
+                    ShowRecursive(subdirs[i].FullName);
+                }
+            }
+            catch
+            {
+
+            }
+     
+        }
         static void Main(string[] args)
         {
-            Ex4();
+            ShowRecursive(@"D:\Programming");
+            //Ex4();
         }
         static void Ex4()
         {
