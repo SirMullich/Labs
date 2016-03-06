@@ -55,14 +55,15 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // display
             // 
-            this.display.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.display.Location = new System.Drawing.Point(132, 22);
+            this.display.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.display.Location = new System.Drawing.Point(78, 43);
             this.display.Name = "display";
-            this.display.Size = new System.Drawing.Size(151, 26);
+            this.display.Size = new System.Drawing.Size(264, 32);
             this.display.TabIndex = 0;
             this.display.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -239,6 +240,7 @@
             this.operationPoint.TabIndex = 16;
             this.operationPoint.Text = ".";
             this.operationPoint.UseVisualStyleBackColor = true;
+            this.operationPoint.Click += new System.EventHandler(this.functionality_Click);
             // 
             // operationResult
             // 
@@ -282,6 +284,7 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "MR";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.functionality_Click);
             // 
             // button3
             // 
@@ -292,6 +295,7 @@
             this.button3.TabIndex = 21;
             this.button3.Text = "MS";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.functionality_Click);
             // 
             // button4
             // 
@@ -302,6 +306,7 @@
             this.button4.TabIndex = 22;
             this.button4.Text = "M+";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.functionality_Click);
             // 
             // button1
             // 
@@ -345,13 +350,25 @@
             this.button7.TabIndex = 26;
             this.button7.Text = "%";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.operation_Click);
+            this.button7.Click += new System.EventHandler(this.percent_Click);
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Location = new System.Drawing.Point(348, 243);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(48, 48);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "1/x";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.functionality_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -415,6 +432,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

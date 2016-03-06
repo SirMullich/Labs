@@ -18,6 +18,8 @@ namespace Week7_Sinusoid_Graph
         float coord_x;
         float coord_y;
         GraphicsPath gp;
+        public Bitmap bmp;
+        Graphics gfx;
 
         public Form1()
         {
@@ -25,6 +27,8 @@ namespace Week7_Sinusoid_Graph
             timer.Interval = 10;
             timer.Tick += MoveEllipse;
             timer.Start();
+
+            gfx = Graphics.FromImage(bmp);
             
             coord_x = 0.0F;
             coord_y = 0.0F;
@@ -43,7 +47,9 @@ namespace Week7_Sinusoid_Graph
                 gp.AddLine(new PointF(8 * coord_x, 150 + 100 * coord_y), new PointF(8 * (coord_x + 0.1F), 150 + 100 * coord_y));
                 coord_x += 0.1F;
                 coord_y = (float)(Math.Sin(coord_x));
-                Refresh();    
+                Refresh();
+                //gfx.DrawLine(p, new PointF(8 * coord_x, 150 + 100 * coord_y), new PointF(8 * (coord_x + 0.1F), 150 + 100 * coord_y));
+                //pictureBox1.Image = bmp;
             }
             else
             {

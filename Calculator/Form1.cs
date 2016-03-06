@@ -25,6 +25,7 @@ namespace Calculator
         string operation;
         State state;
         double ratio;
+        double register;
         public Form1()
         {
             InitializeComponent();
@@ -79,10 +80,11 @@ namespace Calculator
                     operationResult_Click(btn, e);
                     state = State.WaitingForFirstNumber;
                     break;
-                case "%":
-                    operationResult_Click(btn, e);
-                    state = State.WaitingForFirstNumber;
-                    break;
+                //case "%":
+                //    ratio = double.Parse(display.Text);
+                //    operationResult_Click(btn, e);
+                //    state = State.WaitingForFirstNumber;
+                //    break;
                 default:
                     firstNumber = double.Parse(display.Text);
                     state = State.WaitingForSecondNumber;
@@ -132,6 +134,24 @@ namespace Calculator
                 case "CE":
                     display.Text = "";
                     break;
+                case ".":
+                    display.Text += ",";
+                    break;
+                case "1/x":
+                    display.Text = (1 / double.Parse(display.Text)).ToString();
+                    break;
+                case "M+":
+                    display.Text = (double.Parse(display.Text) + register).ToString();
+                    break;
+                case "MS":
+                    register = double.Parse(display.Text);
+                    break;
+                case "MC":
+                    register = 0;
+                    break;
+                case "MR":
+                    display.Text = register.ToString();
+                    break;
                 case "Back":
                     if (display.Text.Length > 0)
                     {
@@ -143,6 +163,34 @@ namespace Calculator
                     }
                     break;
             }
+        }
+
+        private void percent_Click(object sender, EventArgs e)
+        {
+            ratio = double.Parse(display.Text) / 100;
+            switch (operation)
+            {
+                case "+":
+                    result = firstNumber * (1 + ratio);
+                    break;
+                case "-":
+                    result = firstNumber * (1 - ratio);
+                    break;
+                case "*":
+                    result = firstNumber * firstNumber * ratio;
+                    break;
+                case "/":
+                    try
+                    {
+                        result = firstNumber / (firstNumber * ratio);
+                    }
+                    catch (DivideByZeroException except)
+                    {
+                        display.Text = except.Message;
+                    }
+                    break;
+            }
+            display.Text = result.ToString();
         }
     }
 }

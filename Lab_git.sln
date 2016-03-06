@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week7_Sinusoid_Graph", "Week7_Sinusoid_Graph\Week7_Sinusoid_Graph.csproj", "{0E64F1DE-42DC-470A-9EF3-E69D020CB13E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spaceship", "..\PT2016_Week6G1-master\PT2016_Week6G1-master\Spaceship\Spaceship.csproj", "{58181B01-C18A-44A3-A023-6D7C68F43AD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Figures", "Figures\Figures.csproj", "{C1BE95A6-3359-445D-99EB-9B4A25600C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{0E64F1DE-42DC-470A-9EF3-E69D020CB13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E64F1DE-42DC-470A-9EF3-E69D020CB13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E64F1DE-42DC-470A-9EF3-E69D020CB13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58181B01-C18A-44A3-A023-6D7C68F43AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58181B01-C18A-44A3-A023-6D7C68F43AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58181B01-C18A-44A3-A023-6D7C68F43AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58181B01-C18A-44A3-A023-6D7C68F43AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BE95A6-3359-445D-99EB-9B4A25600C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BE95A6-3359-445D-99EB-9B4A25600C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BE95A6-3359-445D-99EB-9B4A25600C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BE95A6-3359-445D-99EB-9B4A25600C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
