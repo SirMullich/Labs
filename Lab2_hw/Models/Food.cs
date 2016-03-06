@@ -24,6 +24,8 @@ namespace Lab2_hw.Models
             //Console.WriteLine("Food created");
             //Console.ReadKey();
         }
+        //equals
+        //Icomparable
         public void DeleteAvail(Point p, Game game)
         {
             for (int i = 0; i < available.Count; ++i)

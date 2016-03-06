@@ -10,6 +10,7 @@ namespace Lab2_hw.Models
     public class Snake : Drawer
     {
         Point head = new Point();
+        public int[] velocity = new int[2];
         public void Eat(Game game) 
         {
             //добавил к змейке новую точку. прирост
@@ -23,26 +24,44 @@ namespace Lab2_hw.Models
             game.score++;
             game.totalScore++;
             game.DrawScoreLevel();
+            if (game.score > 4)
+            {
+                //если последний уровень, то выигрыш
+                if (game.level == 4)
+                {
+                    game.Win();
+                }
+                //в противном случае, переход на следующий уровень
+                else
+                {
+                    game.NextLevel();
+                }
+            }
+            game.food.Draw();
+            game.DrawScoreLevel();
         }
         public Snake()
         {
             color = ConsoleColor.Yellow;
             sign = 'o';
+            velocity[0] = 1;
+            velocity[1] = 0;
         }
 
-        public void Move(int dx, int dy, Game game)
+        public void Move(Game game)
         {
             //выход из функции, если вышли за границы игрового поля
-            if (body[0].x + dx > 47 || body[0].x + dx < 0 || body[0].y + dy > 47 || body[0].y + dy < 0)
+            if (body[0].x + velocity[0] > 47 || body[0].x + velocity[0] < 0 || body[0].y + velocity[1] > 47 || body[0].y + velocity[1] < 0)
             {
                 return;
             }
             //последнюю точку тела змеи добавляем в возможные точки для еды ДО ДВИЖЕНИЯ
+            Point tail = new Point { x = body[body.Count - 1].x, y = body[body.Count - 1].y };
             if (!game.food.available.Contains(body[body.Count - 1])) 
             {
                 if (!(body.Count > 1 && body[body.Count-1].Equals(body[body.Count-2])))
                 {
-                    game.food.available.Add(new Point { x = body[body.Count - 1].x, y = body[body.Count - 1].y });
+                    game.food.available.Add(tail);
                 }
             }
                 
@@ -53,12 +72,21 @@ namespace Lab2_hw.Models
                 body[i].x = body[i - 1].x;
                 body[i].y = body[i - 1].y;
             }
-            //двигаем голову
-            body[0].x = body[0].x + dx;
-            body[0].y = body[0].y + dy;
+            // Двигаем голову
+            body[0].x = body[0].x + velocity[0];
+            body[0].y = body[0].y + velocity[1];
+
+            // Рисование головы
+            Console.ForegroundColor = color;
+            Console.SetCursorPosition(body[0].x, body[0].y);
+            Console.Write(sign);
+
+            // Рисование хвоста
+            Console.SetCursorPosition(tail.x, tail.y);
+            Console.Write(" ");
 
             //новое положение головы убирается из возможных точек для еды, если оно там есть
-            game.food.DeleteAvail(body[0], game);
+            game.food.DeleteAvail(body[0], Game.GetInstance);
             //проверка, есть ли столкновение со стеной
             for (int i = 0; i < game.wall.body.Count; ++i)
             {
@@ -83,5 +111,4 @@ namespace Lab2_hw.Models
             }
         }
     }
-
 }

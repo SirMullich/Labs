@@ -17,7 +17,7 @@ namespace Lab1_hw
         /// </summary>
         static void FileMan1()
         {
-            string path = @"D:\Programming\Workspaces";
+            string path = @"C:\";
             DirectoryInfo dir = new DirectoryInfo(path);
 
             //Все директории и файлы из dir запоминаем в list

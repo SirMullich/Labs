@@ -26,5 +26,6 @@ namespace Lab2_hw.Models
                 return false;
             }
         }
+
     }
 }

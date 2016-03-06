@@ -5,14 +5,15 @@ using System.Linq;
 using System.Media;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Lab2_hw.Models
 {
     [Serializable]
-    public class Game
+    public sealed class Game
     {
+        private static Game instance = null;
+        private static readonly object lockObj = new object();
+        
         public bool inGame;
         public int level;
         public Snake snake;
@@ -22,8 +23,9 @@ namespace Lab2_hw.Models
         public Random rnd;
         public int score;
         public int totalScore;
+        public System.Timers.Timer timer;
 
-        public Game()
+        private Game()
         {
             inGame = true;
             level = 1;
@@ -34,15 +36,33 @@ namespace Lab2_hw.Models
             rnd = new Random();
             score = 0;
             totalScore = 0;
+            timer = new System.Timers.Timer();
+            
+            //timer = new Timer(new TimerCallback(Tick));
+        }
+
+        void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            GetInstance.snake.Move(GetInstance);
+            //ReDraw();
+        }
+        public static Game GetInstance
+        {
+            get
+            {
+                lock (lockObj)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Game();
+                    }
+                    return instance;
+                }
+            }
         }
         //перерисовка
         public void ReDraw() {
-            Console.Clear();
             snake.Draw();
-            wall.Draw();
-            food.Draw();
-            border.Draw();
-            DrawScoreLevel();
         }
         //Загрузка уровня
         public void LoadLevel(int level)
@@ -65,39 +85,53 @@ namespace Lab2_hw.Models
                         wall.body.Add(wallPoint);
 
                         //Удалить эту точку, если она в списке возможных точек еды
-                        food.DeleteAvail(wallPoint, this);
+                        food.DeleteAvail(wallPoint, GetInstance);
                     }
                     col++;
                 }
                 row++;
             }
             fs.Close();
+            wall.Draw();
         }
         //Сохранить игру
-        public void Save(Game game)
+        public void Save()
         {
-            wall.Save(game);
-            food.Save(game);
-            snake.Save(game);
+            wall.Save(GetInstance);
+            food.Save(GetInstance);
+            snake.Save(GetInstance);
         }
         //Продолжить игру
-        public void Resume(Game game)
+        public void Resume()
         {
-            game.wall.Resume(game);
-            game.food.Resume(game);
-            game.snake.Resume(game);
+            wall.Resume(GetInstance);
+            food.Resume(GetInstance);
+            snake.Resume(GetInstance);
         }
         //Инициализация игры
         public void Init()
         {
             Point startPoint = new Point { x = 10, y = 10 };
             snake.body.Add(startPoint);
-            food.DeleteAvail(startPoint, this);
+            food.DeleteAvail(startPoint, GetInstance);
             food.body.Add(new Point { x = 20, y = 10 });
+            LoadLevel(level);
+            // запуск таймера
+            wall.Draw();
+            border.Draw();
+            snake.Draw();
+            food.Draw();
+            DrawScoreLevel();
+
+            timer.Elapsed += timer_Elapsed;
+            timer.Interval = 180;
+            timer.Start();
         }
         //Конец игры
         public void GameOver()
         {
+            timer.Stop();
+            timer.Close();
             SoundPlayer simpleSound = new SoundPlayer(@"Sounds/lose.wav");
             simpleSound.Play();
             Console.Clear();
@@ -108,10 +142,11 @@ namespace Lab2_hw.Models
             Console.WriteLine("Your total score: {0}", totalScore);
             inGame = false;
             //пауза чтобы музыка доиграла
-            Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(5000);
         }
         public void Win()
         {
+            timer.Stop();
             SoundPlayer simpleSound = new SoundPlayer(@"Sounds/win.wav");
             simpleSound.Play();
             Console.Clear();
@@ -119,7 +154,7 @@ namespace Lab2_hw.Models
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Congratulations you WON!!!");
             //пауза чтобы музыка доиграла
-            Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(5000);
             inGame = false;
         }
         //рисование очков рядом с игровым полем
@@ -137,6 +172,7 @@ namespace Lab2_hw.Models
         {
             if (level < 5)
             {
+                Console.Clear();
                 //опусташение тел змеи и еды и стены
                 snake.body.Clear();
                 food.body.Clear();
@@ -147,12 +183,18 @@ namespace Lab2_hw.Models
                 //следующий уровень
                 level++;
                 LoadLevel(level);
+                food.Draw();
+                border.Draw();
                 score = 0;
+                if (timer.Interval > 50)
+                {
+                    timer.Interval -= 50;    
+                }
 
                 int r1 = rnd.Next(food.available.Count);
                 Point s = food.available[r1];
                 snake.body.Add(s);
-                food.DeleteAvail(s, this);
+                food.DeleteAvail(s, GetInstance);
                 int r2 = rnd.Next(food.available.Count);
                 Point f = food.available[r2];
                 food.body.Add(f);
@@ -162,6 +204,23 @@ namespace Lab2_hw.Models
             {
                 GameOver();
             }
+        }
+        //сохранение с помощью BinaryFormatter
+        public void SaveBinary()
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream("save.dat", FileMode.Create, FileAccess.Write);
+
+            bf.Serialize(fs, instance);
+            fs.Close();
+        }
+        //загрузка с помощью BinaryFormatter
+        public void LoadBinary()
+        {
+            FileStream fs = new FileStream("save.dat", FileMode.OpenOrCreate, FileAccess.Read);
+            BinaryFormatter bf = new BinaryFormatter();
+            instance = bf.Deserialize(fs) as Game;
+            fs.Close();
         }
     }
 }
