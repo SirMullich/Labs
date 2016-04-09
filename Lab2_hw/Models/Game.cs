@@ -23,6 +23,7 @@ namespace Lab2_hw.Models
         public Random rnd;
         public int score;
         public int totalScore;
+        [NonSerialized]
         public System.Timers.Timer timer;
 
         private Game()
