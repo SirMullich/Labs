@@ -66,8 +66,11 @@
             this.infotoldykorgan = new System.Windows.Forms.Label();
             this.infosemey = new System.Windows.Forms.Label();
             this.infoatyrau = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.labelTitle = new System.Windows.Forms.Label();
+            this.labelDay = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +130,7 @@
             // labelSemei
             // 
             this.labelSemei.AutoSize = true;
-            this.labelSemei.Location = new System.Drawing.Point(518, 190);
+            this.labelSemei.Location = new System.Drawing.Point(535, 188);
             this.labelSemei.Name = "labelSemei";
             this.labelSemei.Size = new System.Drawing.Size(40, 13);
             this.labelSemei.TabIndex = 7;
@@ -136,7 +139,7 @@
             // labelOskemen
             // 
             this.labelOskemen.AutoSize = true;
-            this.labelOskemen.Location = new System.Drawing.Point(576, 216);
+            this.labelOskemen.Location = new System.Drawing.Point(590, 216);
             this.labelOskemen.Name = "labelOskemen";
             this.labelOskemen.Size = new System.Drawing.Size(53, 13);
             this.labelOskemen.TabIndex = 8;
@@ -255,182 +258,211 @@
             this.infopetropavlovsk.AutoSize = true;
             this.infopetropavlovsk.Location = new System.Drawing.Point(333, 76);
             this.infopetropavlovsk.Name = "infopetropavlovsk";
-            this.infopetropavlovsk.Size = new System.Drawing.Size(35, 13);
+            this.infopetropavlovsk.Size = new System.Drawing.Size(0, 13);
             this.infopetropavlovsk.TabIndex = 21;
-            this.infopetropavlovsk.Text = "label2";
             // 
             // infoaktau
             // 
             this.infoaktau.AutoSize = true;
             this.infoaktau.Location = new System.Drawing.Point(118, 336);
             this.infoaktau.Name = "infoaktau";
-            this.infoaktau.Size = new System.Drawing.Size(35, 13);
+            this.infoaktau.Size = new System.Drawing.Size(0, 13);
             this.infoaktau.TabIndex = 22;
-            this.infoaktau.Text = "label2";
             // 
             // infoaktobe
             // 
             this.infoaktobe.AutoSize = true;
             this.infoaktobe.Location = new System.Drawing.Point(181, 221);
             this.infoaktobe.Name = "infoaktobe";
-            this.infoaktobe.Size = new System.Drawing.Size(35, 13);
+            this.infoaktobe.Size = new System.Drawing.Size(0, 13);
             this.infoaktobe.TabIndex = 23;
-            this.infoaktobe.Text = "label2";
             // 
             // infojezkazgan
             // 
             this.infojezkazgan.AutoSize = true;
             this.infojezkazgan.Location = new System.Drawing.Point(332, 271);
             this.infojezkazgan.Name = "infojezkazgan";
-            this.infojezkazgan.Size = new System.Drawing.Size(35, 13);
+            this.infojezkazgan.Size = new System.Drawing.Size(0, 13);
             this.infojezkazgan.TabIndex = 24;
-            this.infojezkazgan.Text = "label2";
             // 
             // infokostanay
             // 
             this.infokostanay.AutoSize = true;
             this.infokostanay.Location = new System.Drawing.Point(269, 154);
             this.infokostanay.Name = "infokostanay";
-            this.infokostanay.Size = new System.Drawing.Size(35, 13);
+            this.infokostanay.Size = new System.Drawing.Size(0, 13);
             this.infokostanay.TabIndex = 25;
-            this.infokostanay.Text = "label2";
             // 
             // infokokshetau
             // 
             this.infokokshetau.AutoSize = true;
             this.infokokshetau.Location = new System.Drawing.Point(403, 117);
             this.infokokshetau.Name = "infokokshetau";
-            this.infokokshetau.Size = new System.Drawing.Size(35, 13);
+            this.infokokshetau.Size = new System.Drawing.Size(0, 13);
             this.infokokshetau.TabIndex = 26;
-            this.infokokshetau.Text = "label2";
             // 
             // infokaraganda
             // 
             this.infokaraganda.AutoSize = true;
             this.infokaraganda.Location = new System.Drawing.Point(400, 232);
             this.infokaraganda.Name = "infokaraganda";
-            this.infokaraganda.Size = new System.Drawing.Size(35, 13);
+            this.infokaraganda.Size = new System.Drawing.Size(0, 13);
             this.infokaraganda.TabIndex = 27;
-            this.infokaraganda.Text = "label2";
             // 
             // infoastana
             // 
             this.infoastana.AutoSize = true;
             this.infoastana.Location = new System.Drawing.Point(372, 174);
             this.infoastana.Name = "infoastana";
-            this.infoastana.Size = new System.Drawing.Size(35, 13);
+            this.infoastana.Size = new System.Drawing.Size(0, 13);
             this.infoastana.TabIndex = 28;
-            this.infoastana.Text = "label2";
             // 
             // infopavlodar
             // 
             this.infopavlodar.AutoSize = true;
             this.infopavlodar.Location = new System.Drawing.Point(492, 153);
             this.infopavlodar.Name = "infopavlodar";
-            this.infopavlodar.Size = new System.Drawing.Size(35, 13);
+            this.infopavlodar.Size = new System.Drawing.Size(0, 13);
             this.infopavlodar.TabIndex = 29;
-            this.infopavlodar.Text = "label2";
             // 
             // infoustkamenogorsk
             // 
             this.infoustkamenogorsk.AutoSize = true;
             this.infoustkamenogorsk.Location = new System.Drawing.Point(585, 232);
             this.infoustkamenogorsk.Name = "infoustkamenogorsk";
-            this.infoustkamenogorsk.Size = new System.Drawing.Size(35, 13);
+            this.infoustkamenogorsk.Size = new System.Drawing.Size(0, 13);
             this.infoustkamenogorsk.TabIndex = 30;
-            this.infoustkamenogorsk.Text = "label2";
             // 
             // infouralsk
             // 
             this.infouralsk.AutoSize = true;
             this.infouralsk.Location = new System.Drawing.Point(68, 209);
             this.infouralsk.Name = "infouralsk";
-            this.infouralsk.Size = new System.Drawing.Size(35, 13);
+            this.infouralsk.Size = new System.Drawing.Size(0, 13);
             this.infouralsk.TabIndex = 31;
-            this.infouralsk.Text = "label2";
             // 
             // infokyzylorda
             // 
             this.infokyzylorda.AutoSize = true;
             this.infokyzylorda.Location = new System.Drawing.Point(272, 311);
             this.infokyzylorda.Name = "infokyzylorda";
-            this.infokyzylorda.Size = new System.Drawing.Size(35, 13);
+            this.infokyzylorda.Size = new System.Drawing.Size(0, 13);
             this.infokyzylorda.TabIndex = 32;
-            this.infokyzylorda.Text = "label2";
             // 
             // infoshymkent
             // 
             this.infoshymkent.AutoSize = true;
             this.infoshymkent.Location = new System.Drawing.Point(342, 370);
             this.infoshymkent.Name = "infoshymkent";
-            this.infoshymkent.Size = new System.Drawing.Size(35, 13);
+            this.infoshymkent.Size = new System.Drawing.Size(0, 13);
             this.infoshymkent.TabIndex = 33;
-            this.infoshymkent.Text = "label2";
             // 
             // infotaraz
             // 
             this.infotaraz.AutoSize = true;
             this.infotaraz.Location = new System.Drawing.Point(405, 341);
             this.infotaraz.Name = "infotaraz";
-            this.infotaraz.Size = new System.Drawing.Size(35, 13);
+            this.infotaraz.Size = new System.Drawing.Size(0, 13);
             this.infotaraz.TabIndex = 34;
-            this.infotaraz.Text = "label2";
             // 
             // infoalmaty
             // 
             this.infoalmaty.AutoSize = true;
             this.infoalmaty.Location = new System.Drawing.Point(495, 341);
             this.infoalmaty.Name = "infoalmaty";
-            this.infoalmaty.Size = new System.Drawing.Size(35, 13);
+            this.infoalmaty.Size = new System.Drawing.Size(0, 13);
             this.infoalmaty.TabIndex = 35;
-            this.infoalmaty.Text = "label2";
             // 
             // infotoldykorgan
             // 
             this.infotoldykorgan.AutoSize = true;
             this.infotoldykorgan.Location = new System.Drawing.Point(510, 305);
             this.infotoldykorgan.Name = "infotoldykorgan";
-            this.infotoldykorgan.Size = new System.Drawing.Size(35, 13);
+            this.infotoldykorgan.Size = new System.Drawing.Size(0, 13);
             this.infotoldykorgan.TabIndex = 36;
-            this.infotoldykorgan.Text = "label2";
             // 
             // infosemey
             // 
             this.infosemey.AutoSize = true;
             this.infosemey.Location = new System.Drawing.Point(521, 205);
             this.infosemey.Name = "infosemey";
-            this.infosemey.Size = new System.Drawing.Size(35, 13);
+            this.infosemey.Size = new System.Drawing.Size(0, 13);
             this.infosemey.TabIndex = 37;
-            this.infosemey.Text = "label2";
             // 
             // infoatyrau
             // 
             this.infoatyrau.AutoSize = true;
             this.infoatyrau.Location = new System.Drawing.Point(107, 266);
             this.infoatyrau.Name = "infoatyrau";
-            this.infoatyrau.Size = new System.Drawing.Size(35, 13);
+            this.infoatyrau.Size = new System.Drawing.Size(0, 13);
             this.infoatyrau.TabIndex = 38;
-            this.infoatyrau.Text = "label2";
             // 
-            // progressBar1
+            // listBox1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(251, 426);
-            this.progressBar1.Maximum = 18;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(210, 23);
-            this.progressBar1.Step = 1;
-            this.progressBar1.TabIndex = 39;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "Сегодня",
+            "Завтра",
+            "Послезавтра"});
+            this.listBox1.Location = new System.Drawing.Point(32, 72);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(78, 43);
+            this.listBox1.TabIndex = 40;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.DayChanged);
             // 
-            // backgroundWorker1
+            // labelTitle
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunWorkerAsync);
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTitle.ForeColor = System.Drawing.Color.Navy;
+            this.labelTitle.Location = new System.Drawing.Point(198, 20);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(145, 18);
+            this.labelTitle.TabIndex = 41;
+            this.labelTitle.Text = "Прогноз Погоды";
+            // 
+            // labelDay
+            // 
+            this.labelDay.AutoSize = true;
+            this.labelDay.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelDay.Location = new System.Drawing.Point(32, 52);
+            this.labelDay.Name = "labelDay";
+            this.labelDay.Size = new System.Drawing.Size(111, 14);
+            this.labelDay.TabIndex = 42;
+            this.labelDay.Text = "Выберите день:";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Items.AddRange(new object[] {
+            "День",
+            "Ночь"});
+            this.listBox2.Location = new System.Drawing.Point(546, 72);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(97, 43);
+            this.listBox2.TabIndex = 43;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.DayNightChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(547, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 14);
+            this.label2.TabIndex = 44;
+            this.label2.Text = "Время суток:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 490);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.labelDay);
+            this.Controls.Add(this.labelTitle);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.infoatyrau);
             this.Controls.Add(this.infosemey);
             this.Controls.Add(this.infotoldykorgan);
@@ -517,8 +549,11 @@
         private System.Windows.Forms.Label infotoldykorgan;
         private System.Windows.Forms.Label infosemey;
         private System.Windows.Forms.Label infoatyrau;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.Label labelDay;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label label2;
     }
 }
 

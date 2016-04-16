@@ -63,20 +63,20 @@ namespace WeatherForecast.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap karta_kazakhstan_2015 {
+        internal static System.Drawing.Bitmap kazakhstan {
             get {
-                object obj = ResourceManager.GetObject("karta-kazakhstan-2015", resourceCulture);
+                object obj = ResourceManager.GetObject("kazakhstan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static System.Drawing.Bitmap kazakhstan {
+        internal static byte[] WeatherDB {
             get {
-                object obj = ResourceManager.GetObject("kazakhstan", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("WeatherDB", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

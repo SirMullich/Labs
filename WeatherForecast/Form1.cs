@@ -13,68 +13,88 @@ using WeatherForecast.Models;
 
 namespace WeatherForecast
 {
-    public partial class Form1 : Form
-    {
-        readonly int actualDays = 3;
-        //readonly int relevantField = 12;
-        Data dt;
-        Dictionary<string, List<String>> allCitiesDict = new Dictionary<string, List<string>>();
+	public partial class Form1 : Form
+	{
+		int day;
+        int dayNight;
+		Data dt;
+		Dictionary<string, List<String>> allCitiesDict = new Dictionary<string, List<string>>();
+        Label[] infos;
+        String[] cityNames;
 
+		public Form1()
+		{
+			dt = new Data();
+            day = 0;
+            dayNight = 0;
 
-        String[] cities = new String[] { "aktau", "aktobe", "almaty", "astana", "atyrau", 
-                                             "jezkazgan", "karaganda", "kokshetau", "kostanay", 
-                                             "kyzylorda", "pavlodar", "petropavlovsk", "semey", 
-                                             "toldykorgan", "taraz", "uralsk", "ust-kamenogorsk", "shymkent" };
+			InitializeComponent();
+			//Task Progress = new Task(doit);
 
-        public Form1()
-        {
-            dt = new Data();
-            dt.LoadCityData();
-            InitializeComponent();
-            //Task Progress = new Task(doit);
+            cityNames = new string[] { "aktau", "aktobe", "almaty", "astana", "atyrau", 
+											 "jezkazgan", "karaganda", "kokshetau", "kostanay", 
+											 "kyzylorda", "pavlodar", "petropavlovsk", "semey", 
+											 "toldykorgan", "taraz", "uralsk", "ust-kamenogorsk", "shymkent" };
 
-            Label[] infos = new Label[] { infoaktau, infoaktobe, infoalmaty, infoastana, infoatyrau, 
-                                          infojezkazgan, infokaraganda, infokokshetau, infokostanay, 
-                                          infokyzylorda, infopavlodar, infopetropavlovsk, infosemey, 
-                                          infotoldykorgan, infotaraz, infouralsk, infoustkamenogorsk, infoshymkent};
+			infos = new Label[] { infoaktau, infoaktobe, infoalmaty, infoastana, infoatyrau, 
+										  infojezkazgan, infokaraganda, infokokshetau, infokostanay, 
+										  infokyzylorda, infopavlodar, infopetropavlovsk, infosemey, 
+										  infotoldykorgan, infotaraz, infouralsk, infoustkamenogorsk, infoshymkent};
+            listBox1.SelectedIndex = 0;
+            listBox2.SelectedIndex = 0;
+            DayChanged(this, new EventArgs());
 
-            //Progress.RunSynchronously();
-            //Progress.Start();
+            //foreach (var item in dt.LoadWeatherDataRSS("karaganda", 3))
+            //{
+            //    label1.Text += item + Environment.NewLine;
+            //}
 
-            backgroundWorker1.RunWorkerAsync();
+            //label1.Text = dt.LoadWeatherData("almaty", 1).Count.ToString();
 
+			//for (int i = 0; i < 2; i++)
+			//{
+			//    infos[i].Text = String.Format("{0} / {1}", allCitiesDict[cities[i]].ElementAt(1), allCitiesDict[cities[i]].ElementAt(2));
+			//}
+		}
 
-            for (int i = 0; i < 5; i++)
-            {
-                infos[i].Text = String.Format("{0} / {1}", allCitiesDict[cities[i]].ElementAt(1), allCitiesDict[cities[i]].ElementAt(2));
-            }
+		private void doit()
+		{
+
+			// For Test
+			//foreach (var str in dt.LoadWeatherData("almaty", actualDays))
+			//{
+			//    label1.Text += str + Environment.NewLine;
+			//}
+			//for (int i = 0; i < cities.Count(); i++)
+			//{
+			//    allCitiesDict[cities[i]] = dt.LoadWeatherData(cities[i], actualDays);
+			//    //progressBar1.PerformStep();
+			//    //label1.Text = weatherData[1];
+			//}
+
         }
 
-        private void doit()
+        private void DayChanged(object sender, EventArgs e)
         {
+            day = listBox1.SelectedIndex;
 
-            // For Test
-            //foreach (var str in dt.LoadWeatherData("almaty", actualDays))
-            //{
-            //    label1.Text += str + Environment.NewLine;
-            //}
-            //for (int i = 0; i < cities.Count(); i++)
-            //{
-            //    allCitiesDict[cities[i]] = dt.LoadWeatherData(cities[i], actualDays);
-            //    //progressBar1.PerformStep();
-            //    //label1.Text = weatherData[1];
-            //}
+            DateTime date = DateTime.Parse(dt.GetRecord("almaty", day)[6].ToString());
+            date = date.AddDays(day);
+            labelTitle.Text = "Прогноз Погоды на " + date.ToString("dd.MM.yyyy");
+
+            object[] objArr;
+            for (int i = 0; i < infos.Length; i++)
+            {
+                objArr = dt.GetRecord(cityNames[i], day);
+                infos[i].Text = String.Format("{0} / {1}", objArr[2 + 2 * dayNight], objArr[3 + 2 * dayNight]);
+            }
             
         }
 
-        private void RunWorkerAsync(object sender, DoWorkEventArgs e)
+        private void DayNightChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                allCitiesDict[cities[i]] = dt.LoadWeatherData(cities[i], actualDays);
-                //progressBar1.PerformStep();
-                //label1.Text = weatherData[1];
-            }
+            dayNight = listBox2.SelectedIndex;
+            DayChanged(sender, e);
         }
-    }
+	}
 }
